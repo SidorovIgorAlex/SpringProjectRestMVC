@@ -31,11 +31,4 @@ public class Controller {
         }
         return employee;
     }
-
-    @ExceptionHandler
-    public ResponseEntity<EmployeeIncorrectData> exceptionHandler(NoSuchEmployeeException exception) {
-        EmployeeIncorrectData employeeIncorrectData = new EmployeeIncorrectData();
-        employeeIncorrectData.setInfo(exception.getMessage());
-        return new ResponseEntity<>(employeeIncorrectData, HttpStatus.NOT_FOUND);
-    }
 }
