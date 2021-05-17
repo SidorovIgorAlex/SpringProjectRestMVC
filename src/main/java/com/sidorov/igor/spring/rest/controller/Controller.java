@@ -43,4 +43,13 @@ public class Controller {
         employeeService.saveEmployee(employee);
         return employee;
     }
+
+    @DeleteMapping(value = "/employees/{id}")
+    public String deleteEmployee(@PathVariable int id) {
+        Employee employee = employeeService.getEmployee(id);
+        if(employee == null) throw new NoSuchEmployeeException(String.format("There is no employee with ID = " +
+                                                                "%d in Data Base", id));
+        employeeService.deleteEmployee(id);
+        return String.format("Employee with id = %d was deleted", id);
+    }
 }
