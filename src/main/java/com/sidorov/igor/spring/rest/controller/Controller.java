@@ -31,4 +31,10 @@ public class Controller {
         }
         return employee;
     }
+
+    @PostMapping(value = "/employees")
+    public Employee addNewEmployee(@RequestBody Employee employee) {
+        employeeService.saveEmployee(employee);
+        return employee;
+    }
 }
